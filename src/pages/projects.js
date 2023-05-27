@@ -1,14 +1,12 @@
 import React from "react";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-
 import AnimatedText from "@/components/AnimatedText";
 import Link from "next/link";
 import Image from "next/image";
 import { GithubIcon } from "@/components/Icons";
 import { motion } from "framer-motion";
-
-import project1 from "../../public/images/projects/crypto-Screener-cover-image.jpg";
+import project1 from "../../public/images/projects/crypto-screener-cover-image.jpg";
 import TransitionEffects from "@/components/TransitionEffect";
 
 
