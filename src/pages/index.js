@@ -37,7 +37,7 @@ export default function Home() {
               xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl
               ' />
               <p className='my-4 text-base font-medium md:text-sm sm:text-xs'>
-              Transformando conceptos en aplicaciones web innovadoras: descubre mis proyectos y artículos destacados en React.js y desarrollo web..
+              Transformando ideas con programación y diseño...
               </p>
               <div className='flex items-center self-start mt-2 lg:self-center'>
                 <Link href="/dummy.pdf" target={"_blank"}

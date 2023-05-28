@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useRouter } from "react"
+import { useRouter } from "next/router"
 import React from 'react'
 import Logo from './Logo.' 
 import  { WhatsappIcon,TwitterIcon, DribbbleIcon, GithubIcon, LinkedInIcon, PinterestIcon, SunIcon, MoonIcon } from './Icons'
@@ -8,53 +8,57 @@ import useThemeSwitcher from './hooks/useThemeSwiitcher';
 import { useState } from 'react';
 
 const CustomLink = ({ href, title, className=""}) => {
-   
+   const router = useRouter();
   return(
-       <Link href ={href} className={ `${className} relative group`}>
+       <Link href={href} className={`${className} relative group`}>
         {title}
 
         <span
-         className= {
-          `h-[2px] inline-block w-0 bg-dark 
-         absolute left-0 -bottom-0.5
-         group-hover:w-full transition-[width] ease duration-300
-          dark:bg-light`} >{''}
-        
-         </span>
+        className={`
+        h-[2px] inline-block bg-dark
+        absolute left-0 -bottom-0.5
+        group-hover:w-full transition-[width]ease duration-300
+        ${router .asPath === href ? "w-full" : "w-0"}
+        dark:bg-light
+        `}
+        >&nbsp;
+        </span>
        </Link>
   );
 };
 
-const CustomMobileLink = ({ href, title, className="",toggle}) => {
- 
+const CustomMobileLink = ({ href, title, className="", toggle}) => {
+   const router = useRouter();
 
-  const handleClick = () => {
+   const handleClick = () => {
     toggle();
-    router.push(href)
+     router.push(href)
+   }
+  return(
+    <botton href ={href} className={ `${className} relative group text-light dark:text-dark my-2`} onClick={handleClick}>
+        {title}
 
-  }
-
- return(
-      <botton href ={href} className={ `${className} relative group text-light dark:text-dark my-2`} onClick={handleClick}>
-       {title}
-
-       <span
-        className= {
-         `h-[2px] inline-block w-0 bg-light 
+        <span
+        className={`
+        h-[2px] inline-block bg-light
         absolute left-0 -bottom-0.5
-        group-hover:w-full transition-[width] ease duration-300 dark:bg-dark`} >{''}
-       
+        group-hover:w-full transition-[width]ease duration-300
+        ${router .asPath === href ? "w-full" : "w-0"}
+        dark:bg-dark
+        `}
+        >&nbsp;
         </span>
-      </botton>
- );
+       </botton>
+  );
 };
+
 
 const NavBar = () => {
 
   const [mode, setMode] = useThemeSwitcher();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = () =>{
     setIsOpen(!isOpen)
   }
 
@@ -78,7 +82,7 @@ const NavBar = () => {
               <CustomLink href='/' title= "Home" className='mr-4'/>
               <CustomLink href='/about' title= "About"className='mx-4' />
               <CustomLink href='/projects' title= "Projects" className='mx-4'/>
-              <CustomLink href='/articles' title= "Articles"className='m-4'/>
+              <CustomLink href='/articles' title= "Articles"className='ml-4'/>
         </nav>
         
        
@@ -139,10 +143,11 @@ const NavBar = () => {
         </nav>
       </div>
 
+     
       {
         isOpen ?
         
-        <motion.div 
+    <motion.div 
         initial={{scale:0, opacity:0, x: "-50%", y: "-50%" }}
         animate={{scale:1, opacity:1}}
         className='min-w-[70w] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -transparent-x-1/2 -transparent-y-1/2
@@ -156,42 +161,49 @@ const NavBar = () => {
           <CustomMobileLink href='/articles' title= "Articles"className='' toggle={handleClick}/>
         </nav>
  
-         <nav className='flex items-center justify-center flex-wrap mt-2'>
-      <motion.a href="https://twitter.com" target={"_blank"}
-      whileHover={{y:-2}}
-      whileTap={{sacle:0.9}}
-      className="w-6 mr-3 sm:mx-1"
-      >
-        <TwitterIcon/>
-        </motion.a>
-      <motion.a href="https://twitter.com" target={"_blank"}
-       className="w-6 mr-3 bg-light rounded-full dark:bg-dark sm:mx-1"
-       whileHover={{y:-2}}
-       whileTap={{sacle:0.9}}
+        <nav className='flex items-center justify-center flex-wrap mt-2'>
+            <motion.a href="https://www.whatsapp.com/" target={"_blank"}
+            whileHover={{y:-2}}
+            whileTap={{sacle:0.9}}
+            className="w-6 mr-3 sm:mx-1"
+            >
+              <WhatsappIcon/>
+              
+          </motion.a>
+       <motion.a href="https://twitter.com" target={"_blank"}
+       className="w-6 mr-3 bg-light rounded-full dark:bg-light sm:mx-1"
+          whileHover={{y:-2}}
+          whileTap={{sacle:0.9}}
        >
-        <GithubIcon/>
-        </motion.a>
-      <motion.a href="https://twitter.com" target={"_blank"}
-      className="w-6 mx-3sm:mx-1" 
-      whileHover={{y:-2}}
-      whileTap={{sacle:0.9}}
-      >
-        <LinkedInIcon/>
-        </motion.a>
-      <motion.a href="https://twitter.com" target={"_blank"
-      }className="w-6 mx-3  bg-light rounded-full sm:mx-1"
-       whileHover={{y:-2}}
-       whileTap={{sacle:0.9}}
-      >
-        <PinterestIcon/>
-        </motion.a>
-      <a href="https://twitter.com" target={"_blank"
-      }className="w-6 ml-3 sm:mx-1"
-       whileHover={{y:-2}}
-       whileTap={{sacle:0.9}}
-      >
-        <DribbbleIcon/>
-        </a>
+           <TwitterIcon/>
+              </motion.a>
+            <motion.a href="https://github.com" target={"_blank"} className="w-6 mr-3 bg-light rounded-full dark:bg-dark sm:mx-1"
+             whileHover={{y:-2}}
+             whileTap={{sacle:0.9}}
+             >
+              <GithubIcon/>
+              </motion.a>
+            <motion.a href="https://www.linkedin.com/feed" target={"_blank"}
+            className="w-6 mx-3 sm:mx-1" 
+            whileHover={{y:-2}}
+            whileTap={{sacle:0.9}}
+            >
+              <LinkedInIcon/>
+              </motion.a>
+            <motion.a href="https://www.pinterest.es/wzmaster" target={"_blank"
+            }className="w-6 mx-3  bg-light rounded-full sm:mx-1"
+             whileHover={{y:-2}}
+             whileTap={{sacle:0.9}}
+            >
+              <PinterestIcon/>
+         </motion.a>
+          <a href="https://dribbble.com/shots/popular/web-design" target={"_blank"
+           }className="w-6 ml-3 sm:mx-1"
+           whileHover={{y:-2}}
+           whileTap={{sacle:0.9}}
+           >
+           <DribbbleIcon/>
+           </a>
 
         <button
              onClick={() => setMode(mode === "light" ? "dark" : "light")}
@@ -202,7 +214,7 @@ const NavBar = () => {
    {mode === "dark" ? <SunIcon className={"fill-dark"} /> : <MoonIcon className={"fill-dark"} />}
          </button>
 
-  </nav>
+     </nav>
       </motion.div>
 
 

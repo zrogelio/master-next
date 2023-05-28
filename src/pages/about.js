@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
 import Layout from "@/components/Layout";
 import AnimatedText from "@/components/AnimatedText";
@@ -15,7 +16,8 @@ const AnimatedNumbers = ({ value }) => {
 
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, { duration: 3000 });
-  const isInview = useInView(ref, { once: true });
+  const isInview = useInView(ref);
+
   useEffect(() => {
     if (isInview) {
       motionValue.set(value);
@@ -23,7 +25,7 @@ const AnimatedNumbers = ({ value }) => {
   }, [isInview, value, motionValue]);
 
   useEffect(() => {
-    springValue.onChange((latest) => {
+    springValue.on("change", (latest) => {
       if (ref.current && latest.toFixed(0) <= value) {
         ref.current.textContent = latest.toFixed(0);
       }
@@ -40,23 +42,38 @@ const about = () => {
         <title>CodeBucks About Page</title>
         <meta name="description" content="any description" />
       </Head>
-      <TransitionEffects/>
+      <TransitionEffects />
       <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="pt-14">
-          <AnimatedText text="La pasión impulsa mi propósito web!" className="mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8 " />
+          <AnimatedText
+            text="mi pasion por la web!"
+            className="mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8 "
+          />
           <div className="grid w-full grid-cols-8 gap-16 sm:gap-8">
             <div className="col-span-3  flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8">
               <h2 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
                 Biografia
               </h2>
               <p className="font-medium">
-              Hola, soy ZMasterWeb, un desarrollador web y diseñador UI/UX con una pasión por crear experiencias digitales impactantes, intuitivas y centradas en el usuario. Con amplia experiencia en el campo, estoy constantemente buscando nuevas y creativas formas de convertir las ideas de mis clientes en realidad.
+                Hola, soy ZMasterWeb, un desarrollador web y diseñador UI/UX con
+                una pasión por crear experiencias digitales impactantes,
+                intuitivas y centradas en el usuario. Con amplia experiencia en
+                el campo, estoy constantemente buscando nuevas y creativas
+                formas de convertir las ideas de mis clientes en realidad.
               </p>
               <p className="my-4 font-medium">
-              El diseño es una poderosa herramienta para transmitir mensajes, emociones y valores. Creo en utilizar el diseño para contar historias impactantes y conectar de manera significativa con el público objetivo.
+                El diseño es una poderosa herramienta para transmitir mensajes,
+                emociones y valores. Creo en utilizar el diseño para contar
+                historias impactantes y conectar de manera significativa con el
+                público objetivo.
               </p>
               <p className="font-medium">
-              Cuando trabajo en un proyecto, ya sea un sitio web, una aplicación móvil u otro producto digital, mi enfoque está en brindar una experiencia excepcional al usuario a través de un diseño cuidadosamente elaborado. Estoy emocionado de poner mis habilidades y pasión en acción para impulsar el éxito de su próximo proyecto.
+                Cuando trabajo en un proyecto, ya sea un sitio web, una
+                aplicación móvil u otro producto digital, mi enfoque está en
+                brindar una experiencia excepcional al usuario a través de un
+                diseño cuidadosamente elaborado. Estoy emocionado de poner mis
+                habilidades y pasión en acción para impulsar el éxito de su
+                próximo proyecto.
               </p>
             </div>
 
@@ -65,14 +82,16 @@ const about = () => {
         bg-light p-8 dark:bg-dark dark:border-light xl:col-span-4 md:order-1 md:col-span-8
                      "
             >
-              <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light " />
-              <Image  src={profilePic}  alt="codebocks"  clasName="w-full h-auto rounded-2xl"
+     <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light " />
+              <Image
+                src={profilePic}
+                alt="codebocks"
+                clasName="w-full h-auto rounded-2xl"
                 priority
                 sizes="(max-width: 768px) 100vw,
                 (max-width: 1200px) 50vw,
                 33vw"
-
-                />
+              />
             </div>
 
             <div className="col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row xl:items-center md:order-3">

@@ -6,49 +6,62 @@ import Link from "next/link";
 import Image from "next/image";
 import { GithubIcon } from "@/components/Icons";
 import { motion } from "framer-motion";
-import project1 from "../../public/images/projects/crypto-screener-cover-image.jpg";
+import project2 from "../../public/images/projects/agency-website-cover-image.jpg";
+import project3 from "../../public/images/projects/devdreaming.jpg";
+import project4 from "../../public/images/projects/fashion-studio-website.jpg";
+import project5 from "../../public/images/projects/portfolio-cover-image.jpg";
+import project6 from "../../public/images/projects/nft-collection-website-cover-image.jpg";
 import TransitionEffects from "@/components/TransitionEffect";
-
 
 const FramerImage = motion(Image);
 
 const FeaturedProject = ({ type, title, summary, img, link, github }) => {
   return (
-
-    <article 
-     className=" w-full flex items-center justify-between relative rounded-br-2xl
+    <article
+      className=" w-full flex items-center justify-between relative rounded-br-2xl
         rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12  dark:bg-dark  dark:border-light 
         lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4
         "
     >
-  <div  className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark dark:bg-light
-   rounded-br-3xl
-   xs:-right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem]
-   "  />
+      <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light
+      rounded-br-3xl
+      xs:-right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem] " />
+       <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light " />
 
-      <Link  href={link} target="_blank"className="w-1/2 cursor-pointer overflow-hidden rounted-lg lg:w-full"
+      <Link
+        href={link}
+        target="_blank"
+        className="w-1/2 cursor-pointer overflow-hidden rounted-lg lg:w-full"
       >
-        <FramerImage src={img} alt={title} className="w-full h-auto"
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.2 }}
-        priority
-        sizes="(max-width: 768px) 100vw,
+        <FramerImage
+          src={img}
+          alt={title}
+          className="w-full h-auto"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+          priority
+          sizes="(max-width: 768px) 100vw,
         (max-width: 1200px) 50vw,
         33vw"
-         
         />
       </Link>
 
       <div className="w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-6">
-        <span className="text-primary font-medium text-xl dark:text-primaryDark xs:text-base">{type}</span>
+        <span className="text-primary font-medium text-xl dark:text-primaryDark xs:text-base">
+          {type}
+        </span>
         <Link
           href={link}
           target="_blank"
           className="hover:underline underline-offset-2"
         >
-          <h2 className="my-2 full text-left text-4xl font-bold dark:text-light sm:text-sm">{title}</h2>
+          <h2 className="my-2 full text-left text-4xl font-bold dark:text-light sm:text-sm">
+            {title}
+          </h2>
         </Link>
-        <p className="my-2 font-medium text-dark dark:text-light sm:text-sm" >{summary}</p>
+        <p className="my-2 font-medium text-dark dark:text-light sm:text-sm">
+          {summary}
+        </p>
         <div className="mt-2 flex items-center">
           <Link href={github} target="_blank" className="w-10">
             <GithubIcon />{" "}
@@ -76,9 +89,9 @@ const Project = ({ title, type, img, link, github }) => {
         border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light xs:p-4 
         "
     >
-      <div
-        className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark 
-rounded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]
+  <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark 
+rounded-br-3xl
+ dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]
 "
       />
       <Link
@@ -86,20 +99,27 @@ rounded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5
         target="_blank"
         className="w-full cursor-pointer overflow-hildden rounted-lg"
       >
-        <FramerImage src={img} alt={title} className="w-full h-auto" 
+        <FramerImage
+          src={img}
+          alt={title}
+          className="w-full h-auto"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         />
       </Link>
 
       <div className="w-full flex flex-col items-start justify-between mt-4">
-        <span className="text-primary  font-medium text-xl dark:text-primaryDark lg:text-lg md:text-base">{type}</span>
+        <span className="text-primary font-medium text-xl dark:text-primaryDark lg:text-lg md:text-base">
+          {type}
+        </span>
         <Link
           href={link}
           target="_blank"
           className="hover:underline underline-offset-2"
         >
-          <h2 className="my-2 full text-left text-3xl font-bold lg:text-2xl">{title}</h2>
+          <h2 className="my-2 full text-left text-3xl font-bold lg:text-2xl">
+            {title}
+          </h2>
         </Link>
 
         <div className=" w-full mt-2 flex items-center justify-between">
@@ -122,22 +142,22 @@ const projects = () => {
   return (
     <>
       <Head>
-        <title>ZMasterWeb Projects Page</title>
+        <title>zmasternext Projects Page</title>
         <meta name="description" content="any description" />
       </Head>
-      <TransitionEffects/>
+      <TransitionEffects />
       <main className="w-full mb-16 felx flex-col items-center justify-center dark:bg-light">
         <Layout className="pt-16">
           <AnimatedText
             text=" La creatividad conquista el conocimiento!"
             className="mb-16 lg;!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl"
           />
-    
+
           <div className="grid grid-cols-12 gap-24 gap-y-32 xl:gap-w-16 lg:gap-w-8 md:gap-y-24 sm:gap-x-0">
             <div className="col-span-12">
               <FeaturedProject
                 title="Crypto Screener Application"
-                img={project1}
+                img={project5}
                 summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
                        It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
                        local currency."
@@ -149,7 +169,7 @@ const projects = () => {
             <div className="col-span-6 sm:col-span-12">
               <Project
                 title="Crypto Screener Application"
-                img={project1}
+                img={project2}
                 summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
                        It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
                        local currency."
@@ -162,7 +182,7 @@ const projects = () => {
               {" "}
               <Project
                 title="Crypto Screener Application"
-                img={project1}
+                img={project3}
                 summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
                        It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
                        local currency."
@@ -175,7 +195,7 @@ const projects = () => {
               {" "}
               <FeaturedProject
                 title="Crypto Screener Application"
-                img={project1}
+                img={project4}
                 summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
                        It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
                        local currency."
@@ -188,7 +208,7 @@ const projects = () => {
               {" "}
               <Project
                 title="Crypto Screener Application"
-                img={project1}
+                img={project6}
                 summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
                        It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
                        local currency."
@@ -201,7 +221,7 @@ const projects = () => {
               {" "}
               <Project
                 title="Crypto Screener Application"
-                img={project1}
+                img={project2}
                 summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
                        It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
                        local currency."
